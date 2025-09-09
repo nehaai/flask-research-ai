@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# flask-research-ai
-Deep Reseach AI Project
-=======
 # Deep Research App
 
 A Flask-based research assistant that:
@@ -126,4 +122,3 @@ TASK:
 * For best results, provide **full article URLs**, not just `/blog` homepages.
 * Firecrawl API behavior depends on your plan — if `extract()` fails, the app will automatically fall back to `scrape()` or Trafilatura.
 * Some sites may block scraping or require headers → you can enhance with `httpx` headers if needed.
->>>>>>> e252da5 (Initial commit: Flask research app)
