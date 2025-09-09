@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Deep Research</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial; margin: 2rem; max-width: 900px; }
+    input, textarea, button { width: 100%; font-size: 1rem; padding: .75rem; margin-top: .5rem; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .card { background: #fafafa; padding: 1rem; border-radius: 12px; border: 1px solid #eee; }
+    .flash { color: #b00; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <h1>🔎 Deep Research</h1>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="flash">{{ messages[0] }}</div>
+    {% endif %}
+  {% endwith %}
+  <form method="POST" action="/research">
+    <div class="card">
+      <label>Research topic</label>
+      <input name="topic" placeholder="e.g., Latest developments in AI" required />
+      <div class="row">
+        <div>
+          <label>Max URLs</label>
+          <input name="max_urls" type="number" value="8" min="1" max="20" />
+        </div>
+        <div>
+          <label>Per-page character limit</label>
+          <input name="per_page_limit" type="number" value="8000" min="2000" max="20000" />
+        </div>
+      </div>
+      <label>Optional seed URLs (comma-separated)</label>
+      <textarea name="urls" placeholder="https://openai.com/blog, https://huggingface.co/blog"></textarea>
+      <button type="submit">Run research</button>
+    </div>
+  </form>
+  <p style="opacity:.6; margin-top:1rem;">Uses Firecrawl for search/scrape and OpenAI to synthesize a cited report.</p>
+</body>
+</html>
